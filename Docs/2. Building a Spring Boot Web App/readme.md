@@ -11,6 +11,7 @@
       - [Code Examples](#code-examples-1)
     - [Let's Generate toString method](#lets-generate-tostring-method)
   - [8. Spring Data Repositories](#8-spring-data-repositories)
+    - [Repositories](#repositories)
   - [9. Initializing Data with Spring](#9-initializing-data-with-spring)
   - [11. Publisher Relationships](#11-publisher-relationships)
   - [12. H2 Database Console](#12-h2-database-console)
@@ -198,6 +199,75 @@ For Both Author and Book POJOs
 
 ```
 ## 8. Spring Data Repositories
+### Repositories
+let's create a package for the repositories
+![](../Img/3.png)
+
+BookRepository
+```java
+package chamara.springframework.spring5webapp.repositeries;
+
+import chamara.springframework.spring5webapp.domain.Book;
+import org.springframework.data.repository.CrudRepository;
+
+public interface BookRepository extends CrudRepository<Book, Long> {
+}
+
+```
+Author Repository
+
+```java
+package chamara.springframework.spring5webapp.repositeries;
+
+import chamara.springframework.spring5webapp.domain.Author;
+import org.springframework.data.repository.CrudRepository;
+
+public interface AuthorRepository extends CrudRepository<Author, Long> {
+}
+
+```
+
+let's see what the CRUD repository gives us.
+
+```java
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package org.springframework.data.repository;
+
+import java.util.Optional;
+
+@NoRepositoryBean
+public interface CrudRepository<T, ID> extends Repository<T, ID> {
+    <S extends T> S save(S entity);
+
+    <S extends T> Iterable<S> saveAll(Iterable<S> entities);
+
+    Optional<T> findById(ID id);
+
+    boolean existsById(ID id);
+
+    Iterable<T> findAll();
+
+    Iterable<T> findAllById(Iterable<ID> ids);
+
+    long count();
+
+    void deleteById(ID id);
+
+    void delete(T entity);
+
+    void deleteAllById(Iterable<? extends ID> ids);
+
+    void deleteAll(Iterable<? extends T> entities);
+
+    void deleteAll();
+}
+
+```
+so we have access to these methods by default.
 ## 9. Initializing Data with Spring
 ## 11. Publisher Relationships
 ## 12. H2 Database Console
