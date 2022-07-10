@@ -7,6 +7,9 @@
     - [Let's create POJOS for Author](#lets-create-pojos-for-author)
       - [Code Examples](#code-examples)
   - [7. Equality in Hibernate](#7-equality-in-hibernate)
+    - [Let's Generate Equals and hashCode methods](#lets-generate-equals-and-hashcode-methods)
+      - [Code Examples](#code-examples-1)
+    - [Let's Generate toString method](#lets-generate-tostring-method)
   - [8. Spring Data Repositories](#8-spring-data-repositories)
   - [9. Initializing Data with Spring](#9-initializing-data-with-spring)
   - [11. Publisher Relationships](#11-publisher-relationships)
@@ -161,6 +164,39 @@ public class Book {
 
 ![](../Img/2.png)
 ## 7. Equality in Hibernate
+### Let's Generate Equals and hashCode methods
+For Both Author and Book POJOs
+#### Code Examples
+
+```java
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Author author = (Author) o;
+
+        return id != null ? id.equals(author.id) : author.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+```
+### Let's Generate toString method
+```java
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+```
 ## 8. Spring Data Repositories
 ## 9. Initializing Data with Spring
 ## 11. Publisher Relationships
