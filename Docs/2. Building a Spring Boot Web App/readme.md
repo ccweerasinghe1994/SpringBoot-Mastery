@@ -13,6 +13,7 @@
   - [8. Spring Data Repositories](#8-spring-data-repositories)
     - [Repositories](#repositories)
   - [9. Initializing Data with Spring](#9-initializing-data-with-spring)
+  - [10. Add Publisher Entity](#10-add-publisher-entity)
   - [11. Publisher Relationships](#11-publisher-relationships)
   - [12. H2 Database Console](#12-h2-database-console)
   - [13. Introduction to Spring MVC](#13-introduction-to-spring-mvc)
@@ -332,7 +333,228 @@ Book POJO
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 ```
+## 10. Add Publisher Entity
+Let's create a Publisher POJO
+```java
+package chamara.springframework.spring5webapp.domain;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+public class Publisher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+    private String addressLine1;
+    private String city;
+    private String state;
+    private String zipcode;
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
+
+    public Publisher() {
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Publisher publisher = (Publisher) o;
+
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+}
+
+```
+Let's create the Publisher Repository
+
+```java
+package chamara.springframework.spring5webapp.repositeries;
+
+import chamara.springframework.spring5webapp.domain.Publisher;
+import org.springframework.data.repository.CrudRepository;
+
+public interface PublisherRepository extends CrudRepository<Publisher, Long> {
+
+}
+
+```
+And Create a Publisher and add to the InMemory DataBase
+```java
+package chamara.springframework.spring5webapp.bootstrap;
+
+import chamara.springframework.spring5webapp.domain.Author;
+import chamara.springframework.spring5webapp.domain.Book;
+import chamara.springframework.spring5webapp.domain.Publisher;
+import chamara.springframework.spring5webapp.repositeries.AuthorRepository;
+import chamara.springframework.spring5webapp.repositeries.BookRepository;
+import chamara.springframework.spring5webapp.repositeries.PublisherRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class BootstrapData implements CommandLineRunner {
+    private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
+
+    private final PublisherRepository publisherRepository;
+
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
+        this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        Publisher publisher = new Publisher();
+        publisher.setName("SFG Publishing");
+        publisher.setCity("St PetersBerg");
+        publisher.setState("Fl");
+
+        publisherRepository.save(publisher);
+        
+        System.out.println("Publisher Count : " + publisherRepository.count());
+
+        Author eric = new Author("eric", "evans");
+        Book add = new Book("Design driven development", "123123123");
+        eric.getBooks().add(add);
+        add.getAuthors().add(eric);
+
+        add.setPublisher(publisher);
+        publisher.getBooks().add(add);
+
+        authorRepository.save(eric);
+        bookRepository.save(add);
+        publisherRepository.save(publisher);
+
+        Author rod = new Author("rod", "Johnson");
+        Book noEJB = new Book("J2EE", "546234121231");
+
+        add.setPublisher(publisher);
+        publisher.getBooks().add(noEJB);
+        rod.getBooks().add(noEJB);
+        noEJB.getAuthors().add(rod);
+
+        authorRepository.save(rod);
+        bookRepository.save(noEJB);
+        publisherRepository.save(publisher);
+
+        System.out.println("Started in Bootstrap");
+        System.out.println("Number of Books : " + bookRepository.count());
+        System.out.println("Publisher Number of Books : " + publisher.getBooks().size());
+    }
+}
+
+```
+output
+```shell
+Started in Bootstrap
+Publisher Count : 1
+Number of Books : 2
+Publisher Number of Books : 2
+```
 ## 11. Publisher Relationships
+
+```java
+
+```
+```java
+
+```
+```java
+
+```
+```java
+
+```
+```java
+
+```
+```java
+
+```
 ## 12. H2 Database Console
 ## 13. Introduction to Spring MVC
 ## 14. Configuring Spring MVC Controllers
