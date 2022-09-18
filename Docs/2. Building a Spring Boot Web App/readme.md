@@ -764,6 +764,8 @@ change the bookController to point to the books/list file
 ![img](../Img/14.png)
 ![img](https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png)
 
+## 18. Running Spring Pet Clinic
+
 [https://github.com/spring-petclinic/spring-framework-petclinic](https://github.com/spring-petclinic/spring-framework-petclinic)
 
 ```shell
@@ -777,21 +779,19 @@ app running on the local machine
 
 ![ing](../Img/15.png)
 
-## 18. Running Spring Pet Clinic
-
-```Java
-`
-```
-
-```Java
-
-```
-
-```Java
-
-```
-
 ## 19. Intro to SFG Version of Spring PetClinic Application
+
+```Java
+
+```
+
+```Java
+
+```
+
+```Java
+
+```
 
 ## 20. Spring Pet Clinic - Initializing Spring PetClinic Application
 
