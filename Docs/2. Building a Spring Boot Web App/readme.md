@@ -781,18 +781,26 @@ app running on the local machine
 
 ## 19. Intro to SFG Version of Spring PetClinic Application
 
-```Java
-
-```
-
-```Java
-
-```
-
-```Java
-
-```
+![img](../Img/16.png)
+![img](../Img/17.png)
+![img](../Img/18.png)
+![img](../Img/19.png)
 
 ## 20. Spring Pet Clinic - Initializing Spring PetClinic Application
 
+![img](../Img/20.png)
+![img](../Img/21.png)
+
 ## 21. Spring Pet Clinic - Task Planning
+
+```Java
+
+```
+
+```Java
+
+```
+
+```Java
+
+```
