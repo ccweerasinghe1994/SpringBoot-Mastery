@@ -573,13 +573,39 @@ Publisher Number of Books : 2
 
 ## 11. Publisher Relationships
 
-```java
+we are adding this to the publisher because one publisher has many books.
+and we are adding getters and setters foe the books property.
 
+```java
+   @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
+
+        public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 ```
 
-```java
+and we are adding this because one book can have one publisher. one publisher can have many books. and setters and getters are added to.
 
+```java
+    @ManyToOne
+    private Publisher publisher;
+
+        public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 ```
+
+so as you can see we haven't wrote any sql statements. because JPA is generating the SQL queries for us.
 
 ```java
 
