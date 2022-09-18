@@ -18,6 +18,9 @@
   - [11. Publisher Relationships](#11-publisher-relationships)
   - [12. H2 Database Console](#12-h2-database-console)
   - [13. Introduction to Spring MVC](#13-introduction-to-spring-mvc)
+    - [what is MVC](#what-is-mvc)
+    - [MVC](#mvc)
+    - [SPRING MVC](#spring-mvc)
   - [14. Configuring Spring MVC Controllers](#14-configuring-spring-mvc-controllers)
   - [15. Thymeleaf Templates](#15-thymeleaf-templates)
   - [17. Introduction to Spring Pet Clinic](#17-introduction-to-spring-pet-clinic)
@@ -622,7 +625,7 @@ then go to
 
 [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
-![](../Img/5.png)
+![img](../Img/5.png)
 
 output
 
@@ -630,21 +633,61 @@ output
 
 ## 13. Introduction to Spring MVC
 
-```java
+### what is MVC
 
-```
+![img](../Img/8.png)
 
-```java
+### MVC
 
-```
+![img](../Img/9.png)
 
-```java
+### SPRING MVC
 
-```
+![img](../Img/10.png)
 
 ## 14. Configuring Spring MVC Controllers
 
+let's create a new package called Controllers.
+
+let's create a bookController
+
+![](../Img/12.png)
+
+```java
+package chamara.springframework.spring5webapp.controllers;
+
+import chamara.springframework.spring5webapp.repositeries.BookRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class BookController {
+
+    private final BookRepository bookRepository;
+
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    @RequestMapping("/books")
+    public String getBooks(Model model) {
+        model.addAttribute("books", bookRepository.findAll());
+        return "books";
+    }
+}
+
+```
+
 ## 15. Thymeleaf Templates
+
+```java
+
+```
+
+```java
+
+```
 
 ## 17. Introduction to Spring Pet Clinic
 
