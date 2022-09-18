@@ -681,11 +681,97 @@ public class BookController {
 
 ## 15. Thymeleaf Templates
 
-```java
+![img](../Img/13.png)
+
+first add the thymeleaf dependency to the pom.xml file
+
+```xml
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
 ```
 
+remove book from author and author from book POJO to get rid of circular dependency
+Author
+
 ```java
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+```
+
+Book
+
+```java
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                '}';
+    }
+```
+
+And create a new books file inside the templates folder
+create a list.html file inside the book folder
+
+```HTML
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Publisher</td>
+    </tr>
+    </thead>
+    <tr th:each="book:${books}">
+        <td th:text="${book.id}">123</td>
+        <td th:text="${book.title}">123</td>
+        <td th:text="${book.publisher.name}">123</td>
+    </tr>
+</table>
+</body>
+</html>
+```
+
+change the bookController to point to the books/list file
+
+```Java
+    @RequestMapping("/books")
+    public String getBooks(Model model) {
+        model.addAttribute("books", bookRepository.findAll());
+        return "books/list";
+    }
+```
+
+```Java
+
+```
+
+```Java
+
+```
+
+```Java
+
+```
+
+```Java
 
 ```
 
