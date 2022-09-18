@@ -607,25 +607,40 @@ and we are adding this because one book can have one publisher. one publisher ca
 
 so as you can see we haven't wrote any sql statements. because JPA is generating the SQL queries for us.
 
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
 ## 12. H2 Database Console
 
+go to application.properties
+add the following
+
+```java
+spring.h2.console.enabled=true
+```
+
+![img](../Img/6.png)
+
+then go to
+
+[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
+![](../Img/5.png)
+
+output
+
+![img](../Img/7.png)
+
 ## 13. Introduction to Spring MVC
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## 14. Configuring Spring MVC Controllers
 
