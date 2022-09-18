@@ -23,7 +23,7 @@
     - [SPRING MVC](#spring-mvc)
   - [14. Configuring Spring MVC Controllers](#14-configuring-spring-mvc-controllers)
   - [15. Thymeleaf Templates](#15-thymeleaf-templates)
-  - [17. Introduction to Spring Pet Clinic](#17-introduction-to-spring-pet-clinic)
+  - [17. Introduction to Spring Pet Clinic.](#17-introduction-to-spring-pet-clinic)
   - [18. Running Spring Pet Clinic](#18-running-spring-pet-clinic)
   - [19. Intro to SFG Version of Spring PetClinic Application](#19-intro-to-sfg-version-of-spring-petclinic-application)
   - [20. Spring Pet Clinic - Initializing Spring PetClinic Application](#20-spring-pet-clinic---initializing-spring-petclinic-application)
@@ -759,21 +759,28 @@ change the bookController to point to the books/list file
     }
 ```
 
-## 17. Introduction to Spring Pet Clinic
+## 17. Introduction to Spring Pet Clinic.
 
 ![img](../Img/14.png)
 ![img](https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png)
 
 [https://github.com/spring-petclinic/spring-framework-petclinic](https://github.com/spring-petclinic/spring-framework-petclinic)
 
+```shell
+git clone https://github.com/spring-petclinic/spring-framework-petclinic.git
+cd spring-framework-petclinic
+./mvnw jetty:run-war
+# For Windows : ./mvnw.cmd jetty:run-war
+```
+
+app running on the local machine
+
+![ing](../Img/15.png)
+
 ## 18. Running Spring Pet Clinic
 
 ```Java
-
-```
-
-```Java
-
+`
 ```
 
 ```Java
