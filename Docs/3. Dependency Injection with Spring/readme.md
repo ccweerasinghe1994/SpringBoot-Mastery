@@ -15,10 +15,72 @@
 ![img](../Img/32.png)
 ![img](../Img/33.png)
 ![img](../Img/34.png)
+![img](../Img/35.png)
 
 ## Create Spring DI Example Project
 
+![img](../Img/36.png)
+
 ## The Spring Context
+
+run the app with the doc inside
+
+![img](../Img/37.png)
+create the controller
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MyController {
+    public String helloWorld() {
+        System.out.println("Hello World");
+        return "Hi Folks";
+    }
+}
+
+```
+
+get the context
+
+```java
+package chamara.springdi.springdi;
+
+import chamara.springdi.springdi.controllers.MyController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringDiEApplication {
+
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
+
+        MyController myController = (MyController) ctx.getBean("myController");
+
+        String greeting = myController.helloWorld();
+
+        System.out.println(greeting);
+    }
+
+}
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Basics of Dependency Injection
 
