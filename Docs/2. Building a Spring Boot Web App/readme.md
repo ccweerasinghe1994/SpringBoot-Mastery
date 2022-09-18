@@ -1,4 +1,5 @@
 # 2. Building a Spring Boot Web App
+
 - [2. Building a Spring Boot Web App](#2-building-a-spring-boot-web-app)
   - [6. JPA Entities](#6-jpa-entities)
     - [JPA Model](#jpa-model)
@@ -26,17 +27,23 @@
   - [21. Spring Pet Clinic - Task Planning](#21-spring-pet-clinic---task-planning)
 
 ## 6. JPA Entities
+
 ### JPA Model
+
 ![](../Img/1.png)
 
 Author and Books have Many to Many Relationship.
+
 ### Creating POJOS
+
 ### What is POJO
-`
-POJO stands for Plain Old Java Object. It is an ordinary Java object, not bound by any special restriction other than those forced by the Java Language Specification and not requiring any classpath. POJOs are used for increasing the readability and re-usability of a program. POJOs have gained the most acceptance because they are easy to write and understand. They were introduced in EJB 3.0 by Sun microsystems.
-`
+
+`POJO stands for Plain Old Java Object. It is an ordinary Java object, not bound by any special restriction other than those forced by the Java Language Specification and not requiring any classpath. POJOs are used for increasing the readability and re-usability of a program. POJOs have gained the most acceptance because they are easy to write and understand. They were introduced in EJB 3.0 by Sun microsystems.`
+
 - [Reference Link](https://www.geeksforgeeks.org/pojo-vs-java-beans/#:~:text=POJO%20classes,re%2Dusability%20of%20a%20program.)
-### Let's create POJOS for Author 
+
+### Let's create POJOS for Author
+
 #### Code Examples
 
 Author Class
@@ -54,7 +61,7 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
-    
+
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
@@ -101,6 +108,7 @@ public class Author {
 }
 
 ```
+
 Book Class
 
 ```java
@@ -116,7 +124,7 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
-    
+
     @ManyToMany()
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
@@ -167,9 +175,13 @@ public class Book {
 ```
 
 ![](../Img/2.png)
+
 ## 7. Equality in Hibernate
+
 ### Let's Generate Equals and hashCode methods
+
 For Both Author and Book POJOs
+
 #### Code Examples
 
 ```java
@@ -188,7 +200,9 @@ For Both Author and Book POJOs
         return id != null ? id.hashCode() : 0;
     }
 ```
+
 ### Let's Generate toString method
+
 ```java
     @Override
     public String toString() {
@@ -201,12 +215,16 @@ For Both Author and Book POJOs
     }
 
 ```
+
 ## 8. Spring Data Repositories
+
 ### Repositories
+
 let's create a package for the repositories
 ![](../Img/3.png)
 
 BookRepository
+
 ```java
 package chamara.springframework.spring5webapp.repositeries;
 
@@ -217,6 +235,7 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 }
 
 ```
+
 Author Repository
 
 ```java
@@ -270,13 +289,17 @@ public interface CrudRepository<T, ID> extends Repository<T, ID> {
 }
 
 ```
+
 so we have access to these methods by default.
+
 ## 9. Initializing Data with Spring
+
 let's create a Bootstrap package
 
 ![](../Img/4.png)
-Bootstrap 
+Bootstrap
 here @Component indicate that this is managed by Spring
+
 ```java
 package chamara.springframework.spring5webapp.bootstrap;
 
@@ -322,19 +345,26 @@ public class BootstrapData implements CommandLineRunner {
 }
 
 ```
+
 Author POJO
+
 ```java
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 ```
+
 Book POJO
+
 ```java
 @ManyToMany()
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 ```
+
 ## 10. Add Publisher Entity
+
 Let's create a Publisher POJO
+
 ```java
 package chamara.springframework.spring5webapp.domain;
 
@@ -446,6 +476,7 @@ public class Publisher {
 }
 
 ```
+
 Let's create the Publisher Repository
 
 ```java
@@ -459,7 +490,9 @@ public interface PublisherRepository extends CrudRepository<Publisher, Long> {
 }
 
 ```
+
 And Create a Publisher and add to the InMemory DataBase
+
 ```java
 package chamara.springframework.spring5webapp.bootstrap;
 
@@ -494,7 +527,7 @@ public class BootstrapData implements CommandLineRunner {
         publisher.setState("Fl");
 
         publisherRepository.save(publisher);
-        
+
         System.out.println("Publisher Count : " + publisherRepository.count());
 
         Author eric = new Author("eric", "evans");
@@ -528,39 +561,56 @@ public class BootstrapData implements CommandLineRunner {
 }
 
 ```
+
 output
+
 ```shell
-Started in Bootstrap
 Publisher Count : 1
+Started in Bootstrap
 Number of Books : 2
 Publisher Number of Books : 2
 ```
+
 ## 11. Publisher Relationships
 
 ```java
 
 ```
+
 ```java
 
 ```
+
 ```java
 
 ```
+
 ```java
 
 ```
+
 ```java
 
 ```
+
 ```java
 
 ```
+
 ## 12. H2 Database Console
+
 ## 13. Introduction to Spring MVC
+
 ## 14. Configuring Spring MVC Controllers
+
 ## 15. Thymeleaf Templates
+
 ## 17. Introduction to Spring Pet Clinic
+
 ## 18. Running Spring Pet Clinic
+
 ## 19. Intro to SFG Version of Spring PetClinic Application
+
 ## 20. Spring Pet Clinic - Initializing Spring PetClinic Application
+
 ## 21. Spring Pet Clinic - Task Planning
