@@ -271,49 +271,162 @@ output
 Hello World
 ```
 
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-output
-
-```shell
-
-```
-
-output
-
-```shell
-
-```
-
 ## Dependency Injection using Spring Framework
 
+let's add the three ways we can inject dependencies in spring
+
+```java
+package chamara.springdi.springdi;
+
+import chamara.springdi.springdi.controllers.ConstructorInjectedController;
+import chamara.springdi.springdi.controllers.MyController;
+import chamara.springdi.springdi.controllers.PropertyInjectedController;
+import chamara.springdi.springdi.controllers.SetterInjectedController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringDiEApplication {
+
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
+
+        MyController myController = (MyController) ctx.getBean("myController");
+
+        String greeting = myController.helloWorld();
+
+        System.out.println(greeting);
+
+        System.out.println("--------- START PROPERTY ------------------");
+        PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+        System.out.println(propertyInjectedController.getGreeting());
+        System.out.println("--------- END PROPERTY ------------------");
+
+        System.out.println("--------- START SETTER ------------------");
+        SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
+        System.out.println(setterInjectedController.getGreeting());
+        System.out.println("--------- END SETTER ------------------");
+
+        System.out.println("--------- START CONSTRUCTOR ------------------");
+        ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
+        System.out.println(constructorInjectedController.getGreeting());
+        System.out.println("--------- END CONSTRUCTOR ------------------");
+    }
+
+}
+
+```
+
+Start With Property
+we have to add the @Autowired to explicitly tell Spring to manage the DI
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class PropertyInjectedController {
+    @Autowired
+    public GreetingService greetingService;
+
+    public String getGreeting() {
+        return greetingService.sayGreeting();
+    }
+}
+
+```
+
+in the service we have to tell Spring to manage the Service
+
+```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class GreetingServiceImpl implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World";
+    }
+}
+
+```
+
+now let's check the Setter method.
+we have to use the @Autowired and @Controller stereotypes.
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class SetterInjectedController {
+    private GreetingService greetingService;
+
+    public String getGreeting() {
+        return this.greetingService.sayGreeting();
+    }
+
+    @Autowired
+    public void setGreeting(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+}
+
+```
+
+In the Constructor method we only have to add the @Controller stereotype. because Spring do the DI automatically
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ConstructorInjectedController {
+    private final GreetingService greetingService;
+
+    public ConstructorInjectedController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String getGreeting() {
+        return greetingService.sayGreeting();
+    }
+}
+
+```
+
+```shell
+--------- START PROPERTY ------------------
+Hello World
+--------- END PROPERTY ------------------
+--------- START SETTER ------------------
+Hello World
+--------- END SETTER ------------------
+--------- START CONSTRUCTOR ------------------
+Hello World
+--------- END CONSTRUCTOR ------------------
+```
+
 ## Using Qualifiers
+
+```java
+
+```
+
+```java
+
+```
 
 ## Primary Beans
 
