@@ -1,19 +1,17 @@
 package chamara.springdi.springdi.controllers;
 
-import chamara.springdi.springdi.services.GreetingServiceImpl;
+import chamara.springdi.springdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PropertyInjectedControllerTest {
     PropertyInjectedController controller;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         controller = new PropertyInjectedController();
 
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @Test

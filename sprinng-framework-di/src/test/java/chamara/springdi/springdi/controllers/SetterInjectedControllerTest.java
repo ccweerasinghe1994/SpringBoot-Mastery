@@ -1,17 +1,16 @@
 package chamara.springdi.springdi.controllers;
 
-import chamara.springdi.springdi.services.GreetingServiceImpl;
+import chamara.springdi.springdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SetterInjectedControllerTest {
     SetterInjectedController controller;
+
     @BeforeEach
     void setUp() {
         controller = new SetterInjectedController();
-        controller.setGreeting(new GreetingServiceImpl());
+        controller.setGreeting(new ConstructorGreetingService());
     }
 
     @Test

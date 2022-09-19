@@ -422,15 +422,165 @@ Hello World
 
 ## Using Qualifiers
 
+let's create separate Services for each Type Of dependency injections.
+
+PropertyInjectedGreetingService
+
 ```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class PropertyInjectedGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World - Property";
+    }
+}
 
 ```
 
-```java
+SetterInjectedGreetingService
 
+```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SetterInjectedGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World - Setter";
+    }
+}
+
+```
+
+ConstructorGreetingService
+
+```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ConstructorGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World - Constructor";
+    }
+}
+
+```
+
+let's add @Qualifier to let spring know which service to Implement
+
+ConstructorInjectedController
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ConstructorInjectedController {
+    private final GreetingService greetingService;
+
+    public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String getGreeting() {
+        return greetingService.sayGreeting();
+    }
+}
+
+```
+
+PropertyInjectedController
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class PropertyInjectedController {
+    @Qualifier("propertyInjectedGreetingService")
+    @Autowired
+    public GreetingService greetingService;
+
+    public String getGreeting() {
+        return greetingService.sayGreeting();
+    }
+}
+
+```
+
+SetterInjectedController
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class SetterInjectedController {
+    private GreetingService greetingService;
+
+    public String getGreeting() {
+        return this.greetingService.sayGreeting();
+    }
+
+    @Autowired
+    public void setGreeting(@Qualifier("setterInjectedGreetingService") GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+}
+
+```
+
+output
+
+```Shell
+--------- START PROPERTY ------------------
+Hello World - Property
+--------- END PROPERTY ------------------
+--------- START SETTER ------------------
+Hello World - Setter
+--------- END SETTER ------------------
+--------- START CONSTRUCTOR ------------------
+Hello World - Constructor
+--------- END CONSTRUCTOR ------------------
 ```
 
 ## Primary Beans
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Spring Profiles
 
