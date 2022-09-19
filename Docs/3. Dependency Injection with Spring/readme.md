@@ -70,19 +70,28 @@ public class SpringDiEApplication {
 
 ```
 
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
 ## Basics of Dependency Injection
+
+![img](../Img/38.png)
+![img](../Img/39.png)
+![img](../Img/40.png)
+![img](../Img/41.png)
+![img](../Img/42.png)
+![img](../Img/43.png)
+![img](../Img/44.png)
+![img](../Img/45.png)
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Dependency Injection without Spring
 
