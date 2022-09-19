@@ -406,6 +406,8 @@ public class ConstructorInjectedController {
 
 ```
 
+output
+
 ```shell
 --------- START PROPERTY ------------------
 Hello World
