@@ -1,11 +1,18 @@
 package chamara.springdi.springdi.controllers;
 
+import chamara.springdi.springdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
-    public String helloWorld() {
-        System.out.println("Hello World");
-        return "Hi Folks";
+    private final GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+
+        return greetingService.sayGreeting();
     }
 }

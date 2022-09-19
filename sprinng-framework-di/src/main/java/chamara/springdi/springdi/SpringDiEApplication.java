@@ -14,11 +14,11 @@ public class SpringDiEApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
 
+        System.out.println("--------- START PRIMARY BEAN ------------------");
         MyController myController = (MyController) ctx.getBean("myController");
+        System.out.println(myController.sayHello());
+        System.out.println("--------- END PRIMARY BEAN ------------------");
 
-        String greeting = myController.helloWorld();
-
-        System.out.println(greeting);
 
         System.out.println("--------- START PROPERTY ------------------");
         PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");

@@ -591,23 +591,84 @@ Hello World - Constructor
 
 ## Primary Beans
 
+let's create a PrimaryGreetingService with @Primary context annotation
+
 ```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Primary
+@Service
+public class PrimaryGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World from Primary Bean ";
+    }
+}
 
 ```
 
+let's change the MyController to use the Constructor DI
+
 ```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MyController {
+    private final GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+        return greetingService.sayGreeting();
+    }
+}
 
 ```
 
+And Call it inside the Main Method
+
 ```java
+ public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
+
+        System.out.println("--------- START PRIMARY BEAN ------------------");
+        MyController myController = (MyController) ctx.getBean("myController");
+        System.out.println(myController.sayHello());
+        System.out.println("--------- END PRIMARY BEAN ------------------");
 
 ```
 
-```java
-
+```Shell
+--------- START PRIMARY BEAN ------------------
+Hello World from Primary Bean
+--------- END PRIMARY BEAN ------------------
 ```
 
 ## Spring Profiles
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Default Profile
 
