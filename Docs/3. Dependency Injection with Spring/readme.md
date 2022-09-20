@@ -181,7 +181,7 @@ class PropertyInjectedControllerTest {
 
 output
 
-```shell
+```bash
 Hello World
 ```
 
@@ -236,7 +236,7 @@ class SetterInjectedControllerTest {
 
 output
 
-```shell
+```bash
 Hello World
 ```
 
@@ -291,7 +291,7 @@ class ConstructorInjectedControllerTest {
 
 output
 
-```shell
+```bash
 Hello World
 ```
 
@@ -432,7 +432,7 @@ public class ConstructorInjectedController {
 
 output
 
-```shell
+```bash
 --------- START PROPERTY ------------------
 Hello World
 --------- END PROPERTY ------------------
@@ -576,7 +576,7 @@ public class SetterInjectedController {
 
 output
 
-```Shell
+```bash
 --------- START PROPERTY ------------------
 Hello World - Property
 --------- END PROPERTY ------------------
@@ -645,7 +645,7 @@ And Call it inside the Main Method
 
 ```
 
-```Shell
+```bash
 --------- START PRIMARY BEAN ------------------
 Hello World from Primary Bean
 --------- END PRIMARY BEAN ------------------
@@ -748,7 +748,7 @@ Output```java
 
 ````
 
-```shell
+```bash
 Hello World - English
 ````
 
@@ -780,7 +780,7 @@ application.properties
 
 output
 
-```shell
+```bash
 Hello World - English
 ```
 
