@@ -1,9 +1,6 @@
 package chamara.springdi.springdi;
 
-import chamara.springdi.springdi.controllers.ConstructorInjectedController;
-import chamara.springdi.springdi.controllers.MyController;
-import chamara.springdi.springdi.controllers.PropertyInjectedController;
-import chamara.springdi.springdi.controllers.SetterInjectedController;
+import chamara.springdi.springdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +11,10 @@ public class SpringDiEApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
 
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.syaHello());
+
+        
         System.out.println("--------- START PRIMARY BEAN ------------------");
         MyController myController = (MyController) ctx.getBean("myController");
         System.out.println(myController.sayHello());

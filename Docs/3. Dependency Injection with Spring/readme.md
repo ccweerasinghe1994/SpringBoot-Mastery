@@ -654,20 +654,101 @@ Hello World from Primary Bean
 
 ## Spring Profiles
 
+let's create a new controllers
+
+I18nSpanishGreetingService
+
 ```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+@Profile("SP")
+@Service("i18nService")
+public class I18nSpanishGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hola mundo";
+    }
+}
+```
+
+I18nEnglishGreetingService
+
+```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+@Profile("EN")
+@Service("i18nService")
+public class I18nEnglishGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World - English";
+    }
+}
 
 ```
 
+I18nController
+
 ```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.GreetingService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class I18nController {
+    private final GreetingService greetingService;
+
+    public I18nController(@Qualifier("i18nService") GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String syaHello() {
+        return greetingService.sayGreeting();
+    }
+}
 
 ```
 
+application.properties
+
+```ENV
+spring.profiles.active=EN
+```
+
+SpringDiEApplication
+
 ```java
+package chamara.springdi.springdi;
+
+import chamara.springdi.springdi.controllers.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringDiEApplication {
+
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.syaHello());
+
 
 ```
 
-```java
+Output
 
+```shell
+Hello World - English
 ```
 
 ## Default Profile
