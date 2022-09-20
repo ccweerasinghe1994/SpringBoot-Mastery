@@ -10,7 +10,6 @@
   - [Using Qualifiers](#using-qualifiers)
   - [Primary Beans](#primary-beans)
   - [Spring Profiles](#spring-profiles)
-  - [Default Profile](#default-profile)
   - [Dependency Injection Assignment](#dependency-injection-assignment)
   - [Spring Bean Life Cycle](#spring-bean-life-cycle)
   - [Spring Bean Life Cycle Demo](#spring-bean-life-cycle-demo)
@@ -745,13 +744,53 @@ public class SpringDiEApplication {
 
 ```
 
-Output
+Output```java
+
+````
+
+```shell
+Hello World - English
+````
+
+## Default Profile
+
+in side the services we can provide the default value to set that service as the default profile.
+
+I18nEnglishGreetingService
+
+```java
+@Profile({"EN", "default"})
+@Service("i18nService")
+public class I18nEnglishGreetingService implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello World - English";
+    }
+}
+
+```
+
+comment out the active profile
+
+application.properties
+
+```env
+#spring.profiles.active=EN
+```
+
+output
 
 ```shell
 Hello World - English
 ```
 
-## Default Profile
+```java
+
+```
+
+```java
+
+```
 
 ## Dependency Injection Assignment
 
