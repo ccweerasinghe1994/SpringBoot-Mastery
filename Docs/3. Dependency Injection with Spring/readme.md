@@ -1066,6 +1066,8 @@ public class SpringDiEApplication {
 
 ```
 
+output
+
 ```bash
 ## I'm in the LifeCycleBean Constructor
 ## My Bean Name is: lifeCycleDemoBean
