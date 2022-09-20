@@ -1098,23 +1098,23 @@ Hello World - Constructor
 ## The Lifecycle bean has been terminated
 ```
 
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
-```java
-
-```
-
 ## Flashcards
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Open Closed Principle
 
