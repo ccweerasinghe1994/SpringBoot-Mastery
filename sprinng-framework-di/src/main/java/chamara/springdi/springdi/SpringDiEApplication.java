@@ -1,6 +1,7 @@
 package chamara.springdi.springdi;
 
 import chamara.springdi.springdi.controllers.*;
+import chamara.springdi.springdi.services.LifeCycleDemoBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +12,7 @@ public class SpringDiEApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
 
-
+        LifeCycleDemoBean lifeCycleDemoBean = (LifeCycleDemoBean) ctx.getBean("lifeCycleDemoBean");
         System.out.println("--------- START PET SERVICE ------------------");
         PetController petController = (PetController) ctx.getBean("petController", PetController.class);
         System.out.println(petController.whichPetIsTheBest());
