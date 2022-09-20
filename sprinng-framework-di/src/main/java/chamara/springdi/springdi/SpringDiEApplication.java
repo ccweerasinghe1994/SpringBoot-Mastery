@@ -11,10 +11,17 @@ public class SpringDiEApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
 
+
+        System.out.println("--------- START PET SERVICE ------------------");
+        PetController petController = (PetController) ctx.getBean("petController", PetController.class);
+        System.out.println(petController.whichPetIsTheBest());
+        System.out.println("--------- END PET SERVICE ------------------");
+
+        System.out.println("--------- START DEFAULT PROFILE ------------------");
         I18nController i18nController = (I18nController) ctx.getBean("i18nController");
         System.out.println(i18nController.syaHello());
+        System.out.println("--------- END DEFAULT PROFILE ------------------");
 
-        
         System.out.println("--------- START PRIMARY BEAN ------------------");
         MyController myController = (MyController) ctx.getBean("myController");
         System.out.println(myController.sayHello());

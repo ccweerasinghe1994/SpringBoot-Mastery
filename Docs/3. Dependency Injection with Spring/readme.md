@@ -11,6 +11,7 @@
   - [Primary Beans](#primary-beans)
   - [Spring Profiles](#spring-profiles)
   - [Spring Bean Life Cycle](#spring-bean-life-cycle)
+  - [Questions](#questions)
   - [Spring Bean Life Cycle Demo](#spring-bean-life-cycle-demo)
   - [Flashcards](#flashcards)
   - [Open Closed Principle](#open-closed-principle)
@@ -793,7 +794,113 @@ Hello World - English
 ![img](../Img/51.png)
 ![img](../Img/52.png)
 
+## Questions
+
+Interface
+PetService
+
+```java
+package chamara.springdi.springdi.services;
+
+public interface PetService {
+    String GetPetType();
+}
+
+```
+
+Service
+CatPetService
+
+```java
+package chamara.springdi.springdi.services;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+@Service
+@Profile("cat")
+public class CatPetService implements PetService {
+    @Override
+    public String GetPetType() {
+        return "Cats Are the Best!";
+    }
+}
+```
+
+PetController
+
+```java
+package chamara.springdi.springdi.controllers;
+
+import chamara.springdi.springdi.services.PetService;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class PetController {
+    private final PetService petService;
+
+    public PetController(PetService petService) {
+        this.petService = petService;
+    }
+
+    public String whichPetIsTheBest() {
+        return petService.GetPetType();
+    }
+}
+
+```
+
+add the cat profile
+
+```ENV
+spring.profiles.active=cat,EN
+```
+
+Run The Code
+
+```java
+package chamara.springdi.springdi;
+
+import chamara.springdi.springdi.controllers.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringDiEApplication {
+
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(SpringDiEApplication.class, args);
+
+
+        System.out.println("--------- START PET SERVICE ------------------");
+        PetController petController = (PetController) ctx.getBean("petController", PetController.class);
+        System.out.println(petController.whichPetIsTheBest());
+        System.out.println("--------- END PET SERVICE ------------------");
+
+```
+
+output
+
+```bash
+--------- START PET SERVICE ------------------
+Cats Are the Best!
+--------- END PET SERVICE ------------------
+```
+
 ## Spring Bean Life Cycle Demo
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ```java
 
