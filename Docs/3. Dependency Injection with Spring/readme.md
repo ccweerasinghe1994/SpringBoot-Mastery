@@ -1102,23 +1102,125 @@ Hello World - Constructor
 
 ## Flashcards
 
-```java
+---
 
-```
+question
+![img](../Img/53.png)
+answer
 
-```java
+---
 
-```
+![img](../Img/54.png)
+question
+![img](../Img/55.png)
+answer
+![img](../Img/56.png)
 
-```java
+---
 
-```
+question
+![img](../Img/57.png)
+answer
+![img](../Img/58.png)
 
-```java
+---
 
-```
+---
+
+question
+![img](../Img/59.png)
+
+answer
+![img](../Img/60.png)
+
+---
+
+---
+
+question
+![img](../Img/61.png)
+answer
+![img](../Img/62.png)
+
+---
+
+question
+![img](../Img/63.png)
+answer
+![img](../Img/64.png)
+
+---
+
+question
+![img](../Img/65.png)
+answer
+![img](../Img/66.png)
+
+---
+
+question
+![img](../Img/67.png)
+![img](../Img/68.png)
+
+---
+
+question
+![img](../Img/69.png)
+answer
+![img](../Img/70.png)
+
+---
+
+question
+![img](../Img/71.png)
+answer
+![img](../Img/72.png)
+
+---
+
+question
+![img](../Img/73.png)
+answer
+![img](../Img/74.png)
+
+---
+
+question
+![img](../Img/75.png)
+answer
+![img](../Img/76.png)
+
+---
+
+question
+![img](../Img/77.png)
+answer
+![img](../Img/78.png)
+
+---
+
+question
+![img](../Img/79.png)
+answer
+![img](../Img/80.png)
 
 ## Open Closed Principle
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
+
+```java
+
+```
 
 ## Interface Segregation Principle
 
