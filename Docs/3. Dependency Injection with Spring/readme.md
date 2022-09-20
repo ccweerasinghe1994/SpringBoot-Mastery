@@ -10,7 +10,6 @@
   - [Using Qualifiers](#using-qualifiers)
   - [Primary Beans](#primary-beans)
   - [Spring Profiles](#spring-profiles)
-  - [Dependency Injection Assignment](#dependency-injection-assignment)
   - [Spring Bean Life Cycle](#spring-bean-life-cycle)
   - [Spring Bean Life Cycle Demo](#spring-bean-life-cycle-demo)
   - [Flashcards](#flashcards)
@@ -784,19 +783,25 @@ output
 Hello World - English
 ```
 
-```java
-
-```
-
-```java
-
-```
-
-## Dependency Injection Assignment
-
 ## Spring Bean Life Cycle
 
+![img](../Img/46.png)
+![img](../Img/47.png)
+![img](../Img/48.png)
+![img](../Img/49.png)
+![img](../Img/50.png)
+![img](../Img/51.png)
+![img](../Img/52.png)
+
 ## Spring Bean Life Cycle Demo
+
+```java
+
+```
+
+```java
+
+```
 
 ## Flashcards
 
