@@ -1405,6 +1405,9 @@ to be added
 
 ## Interface Naming Conventions
 
+![img](../Img/81.png)
+![img](../Img/82.png)
+
 ## Spring Pet Clinic - POJO Data Model
 
 ## Spring Pet Clinic - Multi-Module Maven Builds
