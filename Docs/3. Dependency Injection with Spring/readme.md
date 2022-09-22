@@ -1410,6 +1410,119 @@ to be added
 
 ## Spring Pet Clinic - POJO Data Model
 
+let's create POJOs for
+
+- Owner
+- Person
+- Pet
+- PetType
+- Vet
+
+**Person**
+
+```java
+package chamara.springframework.springpetclinic.model;
+
+public class Person {
+    private String firstName;
+    private String lastName;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+}
+```
+
+**Owner**
+
+```java
+package chamara.springframework.springpetclinic.model;
+
+public class Owner extends Person{
+}
+```
+
+**Vet**
+
+```java
+package chamara.springframework.springpetclinic.model;
+
+public class Vet extends Person {
+
+}
+```
+
+**Pet**
+
+```java
+package chamara.springframework.springpetclinic.model;
+
+import java.time.LocalDate;
+
+public class Pet {
+    private PetType petType;
+    private Owner owner;
+    private LocalDate birthDate;
+
+    public PetType getPetType() {
+        return petType;
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+```
+
+**PetType**
+
+```java
+package chamara.springframework.springpetclinic.model;
+
+public class PetType {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
+
+```java
+```
+
 ## Spring Pet Clinic - Multi-Module Maven Builds
 
 ## Spring Pet Clinic - Using the Maven Release Plugin
