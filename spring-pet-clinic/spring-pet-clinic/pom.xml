@@ -14,7 +14,7 @@
     </parent>
     <groupId>chamara.springframework</groupId>
     <artifactId>spring-pet-clinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>spring-pet-clinic</name>
     <description>spring-pet-clinic</description>
     <properties>
@@ -46,6 +46,6 @@
     </build>
     <scm>
         <developerConnection>scm:git:git@github.com:ccweerasinghe1994/SpringBoot-Mastery.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>spring-pet-clinic-0.0.2</tag>
   </scm>
 </project>
