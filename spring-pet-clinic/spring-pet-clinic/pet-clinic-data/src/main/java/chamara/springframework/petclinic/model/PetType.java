@@ -1,4 +1,4 @@
-package chamara.springframework.springpetclinic.model;
+package chamara.springframework.petclinic.model;
 
 public class PetType {
     private String name;
