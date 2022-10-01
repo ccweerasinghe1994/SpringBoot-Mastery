@@ -1730,6 +1730,38 @@ pet clinic app
 
 ## Spring Pet Clinic - Using the Maven Release Plugin
 
+to the main app
+add this plugin
+
+```xml
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <scm>
+        <developerConnection>scm:git:git@github.com:ccweerasinghe1994/SpringBoot-Mastery.git</developerConnection>
+      <tag>HEAD</tag>
+  </scm>
+</project>
+```
+
+ then run the
+
+```bash
+mvn release:prepare
+
+mvn release:perform 
+
+```
+
+![img](../Img/87.png)
+
 ## Spring Pet Clinic - Create Interfaces for Services
 
 ## Spring Pet Clinic - Implement Base Entity
