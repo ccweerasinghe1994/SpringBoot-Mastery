@@ -1811,3 +1811,30 @@ public interface VetService {
 ```
 
 ## Spring Pet Clinic - Implement Base Entity
+
+creating the base entity
+
+```java
+package chamara.springframework.petclinic.model;
+import java.io.Serializable;
+public class BaseEntity implements Serializable {
+    private Long id;
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+}
+```
+
+adding the base class
+
+```java
+public class PetType extends BaseEntity 
+
+public class Pet extends BaseEntity {
+
+public class Person extends BaseEntity
+
+```
