@@ -1764,4 +1764,50 @@ mvn release:perform
 
 ## Spring Pet Clinic - Create Interfaces for Services
 
+let's create the interfaces for the
+
+- Owner
+- Pet
+- Vet
+
+**Owner**
+
+```java
+package chamara.springframework.petclinic.services;
+import chamara.springframework.petclinic.model.Owner;
+import java.util.Set;
+public interface OwnerService {
+    Owner findByLastName(String lastName);
+    Owner findBiId(Long id);
+    Owner save(Owner owner);
+    Set<Owner> findAll();
+}
+```
+
+**Pet**
+
+```java
+package chamara.springframework.petclinic.services;
+import chamara.springframework.petclinic.model.Pet;
+import java.util.Set;
+public interface PetService {
+    Pet findBiId(Long id);
+    Pet save(Pet pet);
+    Set<Pet> findAll();
+}
+```
+
+**Vet**
+
+```java
+package chamara.springframework.petclinic.services;
+import chamara.springframework.petclinic.model.Vet;
+import java.util.Set;
+public interface VetService {
+    Vet findBiId(Long id);
+    Vet save(Vet vet);
+    Set<Vet> findAll();
+}
+```
+
 ## Spring Pet Clinic - Implement Base Entity
