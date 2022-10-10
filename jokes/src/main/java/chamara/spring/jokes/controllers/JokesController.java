@@ -12,12 +12,11 @@ public class JokesController {
     public JokesController(JokersService jokersService) {
         this.jokersService = jokersService;
     }
+
     @RequestMapping({"/",})
-    public String showJoke(Model model){
-        model.addAttribute("joke",jokersService.joke());
+    public String showJoke(Model model) {
+        model.addAttribute("joke", jokersService.joke());
 
         return "jokes/jokes";
-    };
-
-
+    }
 }

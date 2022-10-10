@@ -65,6 +65,34 @@ public class JokesServiceImp implements JokersService {
 
 ## 6. Creating the Spring MVC Controller
 
+let's create the controller.
+
+```java
+package chamara.spring.jokes.controllers;
+
+import chamara.spring.jokes.services.JokersService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class JokesController {
+    private final JokersService jokersService;
+
+    public JokesController(JokersService jokersService) {
+        this.jokersService = jokersService;
+    }
+    @RequestMapping({"/",})
+    public String showJoke(Model model){
+        model.addAttribute("joke",jokersService.joke());
+
+        return "jokes/jokes";
+    };
+
+
+}
+```
+
 ## 7. Creating the View Layer
 
 ## 8. Tips and Tricks - Custom Banner
