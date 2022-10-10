@@ -14,6 +14,18 @@ create a spring application using spring.io using web and thymeleaf.
 
 ## 4. Adding Maven Dependencies
 
+add this dependency to the application.
+
+```xml
+<dependency>
+  <groupId>guru.springframework</groupId>
+  <artifactId>chuck-norris-for-actuator</artifactId>
+  <version>3.0.0-M4</version>
+</dependency>
+```
+
+and update the dependency
+
 ## 5. Creating the Spring Service Layer
 
 ## 6. Creating the Spring MVC Controller
