@@ -28,6 +28,41 @@ and update the dependency
 
 ## 5. Creating the Spring Service Layer
 
+let's create the interface
+
+```java
+package chamara.spring.jokes.services;
+
+public interface JokersService {
+    String joke();
+}
+```
+
+and the implementation
+
+```java
+package chamara.spring.jokes.services;
+
+import guru.springframework.norris.chuck.ChuckNorrisQuotes;
+import org.springframework.stereotype.Service;
+
+@Service
+public class JokesServiceImp implements JokersService {
+
+    private final ChuckNorrisQuotes chuckNorrisQuotes;
+
+    public JokesServiceImp() {
+        this.chuckNorrisQuotes = new ChuckNorrisQuotes();
+    }
+
+    @Override
+    public String joke() {
+        return chuckNorrisQuotes.getRandomQuote();
+    }
+}
+
+```
+
 ## 6. Creating the Spring MVC Controller
 
 ## 7. Creating the View Layer
