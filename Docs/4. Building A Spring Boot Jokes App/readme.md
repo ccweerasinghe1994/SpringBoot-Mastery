@@ -118,6 +118,8 @@ Chuck Norris does infinite loops in 4 seconds.
 
 ## 8. Tips and Tricks - Custom Banner
 
+to add a custom banner we can add a text file to the resources section.
+
 ## 9. Spring Pet Clinic - Refactor Services to Common Interface
 
 ## 10. Spring Pet Clinic - Create Index Page and Controller
