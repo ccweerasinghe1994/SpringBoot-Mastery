@@ -95,6 +95,27 @@ public class JokesController {
 
 ## 7. Creating the View Layer
 
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>chuck noris jokes</title>
+</head>
+<body>
+<h1>chuck norris Jokes</h1>
+<p th:text="${joke}">Show jokes here</p>
+</body>
+</html>
+```
+
+output
+
+```bash
+chuck norris Jokes
+Chuck Norris does infinite loops in 4 seconds.
+```
+
 ## 8. Tips and Tricks - Custom Banner
 
 ## 9. Spring Pet Clinic - Refactor Services to Common Interface
